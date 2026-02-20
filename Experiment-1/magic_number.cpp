@@ -1,6 +1,6 @@
 class Solution {
 private:
-    const int MOD = 1000000007;
+    const int MOD = 1e9 + 7;
 
     long long findGCD(long long x, long long y) {
         while (y != 0) {
