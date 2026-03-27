@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> parent;
+// vector<int> sz;
+vector<int> Rank;
+
+void make(int i) {
+    parent[i] = i;
+    // sz[i] = 1;
+    Rank[i] = 0;
+}
+
+int find(int node) {
+    if (parent[node] == node) return node;
+    return parent[node] = find(parent[node]);
+}
+
+void Union(int node1, int node2) {
+    int p1 = find(node1);
+    int p2 = find(node2);
+    if (p1 != p2) {
+        if (Rank[p1] < Rank[p2]) {
+            swap(p1, p2);
+        }
+        parent[p2] = p1;
+        // sz[p1] += sz[p2];
+        if (Rank[p1] == Rank[p2]) {
+            Rank[p1]++;
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    parent = vector<int> (n + 1, 0);
+    // sz = vector<int> (n + 1, 0);
+    Rank = vector<int> (n + 1, 0);
+    for (int i = 1; i <= n; i++) {
+        make(i);
+    }   
+
+    for (int i = 0; i < m; i++) {
+        int a;
+        int b;
+        cin >> a >> b;
+        Union(a, b);
+    }
+
+    int cnt = 0;
+    for (int i = 1; i <= n; i++) {
+        if (parent[i] == i) cnt++;
+    }
+    cout << cnt;
+    return 0;
+}
