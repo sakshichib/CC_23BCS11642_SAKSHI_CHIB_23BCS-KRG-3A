@@ -5,9 +5,7 @@ int main() {
 
     int n, m;
     cin >> n >> m;
-
     unordered_set<string> st;
-
     for(int i = 0; i < n; i++) {
         string s;
         cin >> s;
