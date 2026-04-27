@@ -6,7 +6,7 @@ public:
     vector<int> countSmaller(vector<int>& nums) {
         int n = nums.size();
         vector<int> counts(n, 0);
-        vector<pair<int,int>> arr; // {value, original index}
+        vector<pair<int,int>> arr; 
 
         for (int i = 0; i < n; i++) {
             arr.push_back({nums[i], i});
@@ -34,7 +34,7 @@ private:
         while (i <= mid && j <= right) {
             if (arr[j].first < arr[i].first) {
                 temp.push_back(arr[j]);
-                rightCount++;  // one smaller element from right
+                rightCount++;  
                 j++;
             } else {
                 counts[arr[i].second] += rightCount;
